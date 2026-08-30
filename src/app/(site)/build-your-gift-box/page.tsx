@@ -31,9 +31,9 @@ export default async function BuildYourGiftBoxPage() {
   const { categories, products } = await getBuilderData();
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10">
-      <h1 className="text-2xl font-semibold">Build Your Gift Box</h1>
-      <p className="mt-1 max-w-xl text-muted">
+    <div className="mx-auto max-w-7xl px-4 py-14 sm:py-20">
+      <h1 className="font-display text-3xl font-medium sm:text-5xl">Build Your Gift Box</h1>
+      <p className="mt-3 max-w-xl text-muted">
         Mix and match from our entire catalogue to build a gift box that&apos;s
         uniquely yours.
       </p>

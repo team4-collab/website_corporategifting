@@ -27,15 +27,15 @@ export function GiftBoxBuilder({
   }, [products, activeCategory, search]);
 
   return (
-    <div className="mt-6">
+    <div className="mt-10">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setActiveCategory("all")}
-            className={`rounded-full px-4 py-1.5 text-sm ${
+            className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
               activeCategory === "all"
-                ? "bg-foreground text-background"
-                : "border border-border text-muted hover:text-foreground"
+                ? "bg-accent text-accent-foreground"
+                : "border border-border text-muted hover:border-accent hover:text-foreground"
             }`}
           >
             All
@@ -44,10 +44,10 @@ export function GiftBoxBuilder({
             <button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
-              className={`rounded-full px-4 py-1.5 text-sm ${
+              className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
                 activeCategory === category.id
-                  ? "bg-foreground text-background"
-                  : "border border-border text-muted hover:text-foreground"
+                  ? "bg-accent text-accent-foreground"
+                  : "border border-border text-muted hover:border-accent hover:text-foreground"
               }`}
             >
               {category.name}
@@ -59,14 +59,14 @@ export function GiftBoxBuilder({
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search products…"
-          className="w-full rounded-full border border-border px-4 py-2 text-sm sm:w-64"
+          className="w-full rounded-full border border-border bg-card px-4 py-2 text-sm outline-none transition focus:border-accent sm:w-64"
         />
       </div>
 
       {filtered.length === 0 ? (
-        <p className="mt-10 text-muted">No products match your filters yet.</p>
+        <p className="mt-14 text-center text-muted">No products match your filters yet.</p>
       ) : (
-        <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

@@ -41,28 +41,32 @@ export default async function CategoryPage({
 
   return (
     <>
-      <div className="relative overflow-hidden bg-card">
+      <div className="relative overflow-hidden bg-foreground">
         {category.image_url && (
           <Image
             src={category.image_url}
             alt=""
             fill
-            className="object-cover opacity-25"
+            priority
+            className="object-cover opacity-50"
           />
         )}
-        <div className="relative mx-auto max-w-7xl px-4 py-10">
-          <h1 className="text-2xl font-semibold">{category.name}</h1>
+        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(20,17,12,0.9)_0%,rgba(20,17,12,0.35)_100%)]" />
+        <div className="relative mx-auto max-w-7xl px-4 py-16 sm:py-20">
+          <h1 className="font-display text-3xl font-medium text-white sm:text-5xl">
+            {category.name}
+          </h1>
           {category.description && (
-            <p className="mt-1 max-w-xl text-muted">{category.description}</p>
+            <p className="mt-3 max-w-xl text-white/80">{category.description}</p>
           )}
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 py-10">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:py-20">
         {products.length === 0 ? (
           <p className="text-muted">No products in this category yet.</p>
         ) : (
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
